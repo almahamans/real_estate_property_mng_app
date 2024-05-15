@@ -1,17 +1,14 @@
-import DisplayProperty from "./displayProp"; 
-function Property({id, title, city, country, location, price, img}){
+function ShowProperty({id, title, price, city, country, location, info, img}){
     return(
-    <section className=" mt-9 p-3 w-50 bg-inheret text-black rounded-lg flex flex-col justify-around flex-wrap font-sans shadow-lg shadow-current-300/40">
+        <div>
     <h1 className='font-semibold'><span className='text-red-800 underline'>Title:</span> {title}</h1>
     <p className='mb-2'><span className='text-red-800'>City:</span> {city}</p>
     <p className='mb-2'><span className='text-red-800'>Country:</span> {country}</p>
     <p className='mb-2'><span className='text-red-800'>Location:</span> {location}</p>
     <p className='mb-2'><span className='text-red-800'>Price:</span> {price}</p>
-    {/* <p className='mb-2'><span className='text-red-800'>Information:</span> {info}</p> */}
+    <p className='mb-2'><span className='text-red-800'>Information:</span> {info}</p>
     <img src={img} alt="property" className='contrast-100 rounded lg:size-44 md:size-36 sm:size-36 xs:size-36 mx-auto'/>
-    <button onClick={<DisplayProperty props={id} />}>more info</button>
-    </section>  
+        </div>
     )
-
 }
-export default Property;
+export default ShowProperty;

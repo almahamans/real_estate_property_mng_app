@@ -1,22 +1,57 @@
 import { useEffect , useState} from "react";
+import Property from './property';
+import ShowProperty from "./showAproperty";
 
-function displayFunction(){
-    const [propertyImage, setPropertyImage] = useState('')
+function DisplayFunction(){
+    const [properties, setProperties] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     const debounce = setTimeout(()=>{
-      fetch(`https://66438e8e6c6a656587078f5e.mockapi.io/property/image`)
-      .then(res => res.json())
-      .then(data => setPropertyImage(data))
+      fetch(`https://66438e8e6c6a656587078f5e.mockapi.io/property`, {
+        method: 'GET',
+        headers: {'content-type':'application/json'}}
+      )
+      .then(res => {return res.json()})
+      .then(data => {setProperties(data); console.log(data)})
+      .catch(err => console.log(err))
     },800)
     return () => clearTimeout(debounce)
   },[])
-
+  
     return(
-        <div>
-
-        </div>
+      <section className='flex flex-row flex-wrap  justify-around'>
+         { 
+         properties.map((x)=>    
+          <Property 
+          key={x.id}
+          id={x.id}
+          title={x.title}
+          price={x.price}
+          city={x.city}
+          country={x.country}
+          location={x.location}
+          img={x.img}
+          />
+          )
+          }
+          {
+            properties.map((x)=>
+            <ShowProperty
+            key={x.id}
+            id={x.id}
+            title={x.title}
+            price={x.price}
+            city={x.city}
+            country={x.country}
+            location={x.location}
+            info={x.info}
+            img={x.img}
+            />
+            )
+          }
+        </section>
     )
+    
 }
 
-export default displayFunction;
+export default DisplayFunction;
