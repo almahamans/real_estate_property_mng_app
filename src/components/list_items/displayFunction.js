@@ -1,6 +1,5 @@
 import { useEffect , useState} from "react";
 import Property from './property';
-import ShowProperty from "./showAproperty";
 
 function DisplayFunction(){
     const [properties, setProperties] = useState([])
@@ -19,7 +18,7 @@ function DisplayFunction(){
   },[])
   
     return(
-      <section className='flex flex-row flex-wrap  justify-around'>
+      <section className='flex flex-row flex-wrap justify-around'>
          { 
          properties.map((x)=>    
           <Property 
@@ -34,21 +33,7 @@ function DisplayFunction(){
           />
           )
           }
-          {
-            properties.map((x)=>
-            <ShowProperty
-            key={x.id}
-            id={x.id}
-            title={x.title}
-            price={x.price}
-            city={x.city}
-            country={x.country}
-            location={x.location}
-            info={x.info}
-            img={x.img}
-            />
-            )
-          }
+         
         </section>
     )
     
