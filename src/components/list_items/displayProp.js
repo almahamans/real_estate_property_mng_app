@@ -15,7 +15,7 @@ function DisplayProperty(){
         const data = await res.json();
         setProperties({data});
       } catch (err) {
-        return console.log(`there is error ${err}`);
+        return console.error(`there is error ${err}`);
       }
     }, [id])
 

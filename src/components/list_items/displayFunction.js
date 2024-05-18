@@ -13,11 +13,11 @@ function DisplayFunction(){
       )
       .then(res => {return res.json()})
       .then(data => {setProperties(data)})
-      .catch(err => console.log(`there is error ${err}`))
+      .catch(err => console.error(`there is error ${err}`))
     },500)
     return () => clearTimeout(debounce)
   },[])
-
+console.log(properties)
     return(
       <section className='flex flex-row flex-wrap justify-around'>
          { 
