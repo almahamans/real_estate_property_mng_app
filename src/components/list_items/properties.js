@@ -10,16 +10,16 @@ function Properties({id, title, city, country, location, price, img}){
             headers: { 'Content-type': 'application/json'}
         }
         )
-        window.location.reload(true);
+        // window.location.reload(true);
     }
-    // const handleAbort = () => {
-    //     return
-    // }
+    const handleAbort = () => {
+        return
+    }
     //display confirm message before delete
     const confirmDelete = Confirm(
         'Sure you want to delete this property?',
-        handleDelete
-        // handleAbort,
+        handleDelete,
+        handleAbort,
       );
     return(
     <section className=" mt-9 p-3 w-[30%] bg-inheret text-black rounded-lg flex flex-col justify-around flex-wrap font-sans shadow-lg shadow-current-300/40">
