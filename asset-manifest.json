@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/real_estate_property_mng_app/static/css/main.1b4424f6.css",
-    "main.js": "/real_estate_property_mng_app/static/js/main.14bfa48c.js",
+    "main.js": "/real_estate_property_mng_app/static/js/main.5711d9bf.js",
     "static/media/fb-purchase-property.jpg": "/real_estate_property_mng_app/static/media/fb-purchase-property.8e9232c1961fbaee78c3.jpg",
     "index.html": "/real_estate_property_mng_app/index.html",
     "main.1b4424f6.css.map": "/real_estate_property_mng_app/static/css/main.1b4424f6.css.map",
-    "main.14bfa48c.js.map": "/real_estate_property_mng_app/static/js/main.14bfa48c.js.map"
+    "main.5711d9bf.js.map": "/real_estate_property_mng_app/static/js/main.5711d9bf.js.map"
   },
   "entrypoints": [
     "static/css/main.1b4424f6.css",
-    "static/js/main.14bfa48c.js"
+    "static/js/main.5711d9bf.js"
   ]
 }
