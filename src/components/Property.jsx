@@ -7,8 +7,11 @@ import { PropertyPrice } from "./PropertyPrice";
 
 export const Property = (props) => {
   let { title, image, location, price } = props.property;
+  // console.log("props.property ", props.property);
 
-  console.log("props.property ", props.property);
+   const handleDelete = (id) => {
+    props.onHandleDeleteProperty(id);
+   };
   return (
     <>
       <section className="flex flex-col">
@@ -16,6 +19,7 @@ export const Property = (props) => {
         <PropertyImage image={image} title={title} />
         <PropertyLocation location={location} />
         <PropertyPrice price={price} />
+        <button onClick={() => handleDelete(props.property.id)}>Delete</button>
       </section>
     </>
   );
