@@ -10,21 +10,21 @@ export const AddProperty = (props) => {
   });
   const [errors, setErrors] = useState({});
   const validate = () => {
-  const newErrors = {};
-  if (!title) {
-    newErrors.title = "Title is required";
-  } else if (!/^[a-zA-Z\s]/.test(title)) {
-    newErrors.title = "Title must not contain numbers or special characters";
-  }
-  if (!location) {
-    newErrors.location = "location is required";
-  }
-  if (!price) {
-    newErrors.price = "Price is required";
-  } else if (!/^[0-9]+(\.[0-9]{1,2})?$/.test(price)) {
-    newErrors.price = "Price must be a numeric value";
-  }
-  return newErrors;
+    const newErrors = {};
+    if (!property.title.trim()) {
+      newErrors.title = "Title is required";
+    } else if (!/^[a-zA-Z\s]/.test(property.title)) {
+      newErrors.title = "Title must not contain numbers or special characters";
+    }
+    if (!property.location) {
+      newErrors.location = "Location is required";
+    }
+    if (!property.price) {
+      newErrors.price = "Price is required";
+    } else if (!/^[0-9]+(\.[0-9]{1,2})?$/.test(property.price)) {
+      newErrors.price = "Price must be a numeric value";
+    }
+    return newErrors;
   };
 
   const handleChange = (event) => {
@@ -40,27 +40,25 @@ export const AddProperty = (props) => {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      return;
     } else {
-    setErrors({});
-    
-    const newProperty = {
-      id: nanoid(),
-      title: property.title,
-      location: property.location,
-      price: property.price,
-      image: property.image,
-    };
-    props.onHandleAddProperty(newProperty);
-  
-    console.log("new property ", newProperty);    
+      setErrors({});
+      const newProperty = {
+        id: nanoid(),
+        title: property.title,
+        location: property.location,
+        price: property.price,
+        image: property.image,
+      };
+      props.onHandleAddProperty(newProperty);
+      console.log("new property ", newProperty);
       setProperty({
         title: "",
         image: "",
         price: 0,
-        location: ""
+        location: "",
       });
-      
-      }
+    }
   };
 
   return (

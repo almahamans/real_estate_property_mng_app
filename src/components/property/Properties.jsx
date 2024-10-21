@@ -5,7 +5,6 @@ import { Property } from "./Property";
 export const Properties = (props) => {
   let { properties, onHandleDeleteProperty } = props;
   // console.log("properties ", properties);
-
   return (
     <>
       {properties.length > 0 ? (
