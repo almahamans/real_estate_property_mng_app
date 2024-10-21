@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 
 // import '../src/main.css';
-import { Properties } from "./components/Properties";
+import { Properties } from "./components/property/Properties";
 import propertiesData from "./components/propertiesData";
-import { AddProperty } from "./components/AddProperty";
+import { AddProperty } from "./components/property/AddProperty";
+import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
 
 const App = () => {
   const [propertyList, setPropertyList] = useState(propertiesData); //update the list
 
   const handleAddingItem = (newProperty) => {
-    setPropertyList(prevPropertiesList => {
-      return [...prevPropertiesList, newProperty]
-    })
-  }
+    setPropertyList((prevPropertiesList) => {
+      return [...prevPropertiesList, newProperty];
+    });
+  };
   // console.log("propertyList", propertyList);
 
   const handleDeleteItem = (id) => {
-    const filteredProperties = propertyList.filter((property) => property.id !== id);
+    const filteredProperties = propertyList.filter(
+      (property) => property.id !== id
+    );
     setPropertyList(filteredProperties);
   };
   return (
-    <Properties
-      properties={propertyList}
-      onHandleDeleteProperty={handleDeleteItem}
-    />
-    // <AddProperty onHandleAddProperty={handleAddingItem} />
+    <>
+      <Header />
+      {/* <Properties
+        properties={propertyList}
+        onHandleDeleteProperty={handleDeleteItem}
+      /> */}
+      <AddProperty onHandleAddProperty={handleAddingItem} />
+      <Footer />
+    </>
   );
 };
 

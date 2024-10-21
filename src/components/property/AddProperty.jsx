@@ -8,8 +8,26 @@ export const AddProperty = (props) => {
     price: 0,
     location: "",
   });
+  const [errors, setErrors] = useState({});
+  const validate = () => {
+  const newErrors = {};
+  if (!title) {
+    newErrors.title = "Title is required";
+  } else if (!/^[a-zA-Z\s]/.test(title)) {
+    newErrors.title = "Title must not contain numbers or special characters";
+  }
+  if (!location) {
+    newErrors.location = "location is required";
+  }
+  if (!price) {
+    newErrors.price = "Price is required";
+  } else if (!/^[0-9]+(\.[0-9]{1,2})?$/.test(price)) {
+    newErrors.price = "Price must be a numeric value";
+  }
+  return newErrors;
+  };
 
-  let handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setProperty((prevStatus) => ({
       ...prevStatus,
@@ -17,8 +35,14 @@ export const AddProperty = (props) => {
     }));
   };
 
-  let handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+    setErrors({});
+    
     const newProperty = {
       id: nanoid(),
       title: property.title,
@@ -27,16 +51,18 @@ export const AddProperty = (props) => {
       image: property.image,
     };
     props.onHandleAddProperty(newProperty);
-
-    console.log("new property ", newProperty);
-
-    setProperty({
-      title: "",
-      image: "",
-      price: 0,
-      location: "",
-    });
+  
+    console.log("new property ", newProperty);    
+      setProperty({
+        title: "",
+        image: "",
+        price: 0,
+        location: ""
+      });
+      
+      }
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -48,6 +74,7 @@ export const AddProperty = (props) => {
           onChange={handleChange}
           value={property.title}
         />
+        {errors.title && <span>{errors.title}</span>}
         <label htmlFor="image">Image: </label>
         <input
           type="text"
@@ -64,6 +91,7 @@ export const AddProperty = (props) => {
           onChange={handleChange}
           value={property.price}
         />
+        {errors.price && <span>{errors.price}</span>}
         <label htmlFor="location">Location: </label>
         <input
           type="text"
@@ -72,6 +100,7 @@ export const AddProperty = (props) => {
           onChange={handleChange}
           value={property.location}
         />
+        {errors.location && <span>{errors.location}</span>}
         <button type="submit">Add property</button>
       </form>
     </div>
