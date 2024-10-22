@@ -12,20 +12,21 @@ export const AddProperty = (props) => {
     price: 0,
     location: "",
   });
+
   const [errors, setErrors] = useState({});
 
-const handleChange = (event) => {
-  const { name, value } = event.target;
-  setProperty((prevStatus) => ({
-    ...prevStatus,
-    [name]: value,
-  }));
-};
-const handleImageChange = (event) => {
-  setProperty(preStat => {
-    return {... preStat, image: event.target.files[0]};
-  })
-};
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setProperty((prevStatus) => ({
+      ...prevStatus,
+      [name]: value,
+    }));
+  };
+  const handleImageChange = (event) => {
+    setProperty(preStat => {
+      return {... preStat, image: event.target.files[0]};
+    })
+  };
 
 const validateinput = () => {
   const newErrors = {};
@@ -57,9 +58,13 @@ const handleSubmit = async (event) => {
         image: imageUrl,
         location: property.location,
       };
+
       console.log("new Property ", newProperty);
+
       toast.success("Property created successfully!");
+
       props.onHandleAddProperty(newProperty);
+      
       setProperty({
         title: "",
         image: "",
