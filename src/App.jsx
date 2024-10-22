@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import '../src/main.css';
 import { Properties } from "./components/property/Properties";
 import propertiesData from "./components/propertiesData";
-import { AddProperty } from "./components/property/AddProperty";
+import { AddProperty } from "./components/form/AddPropertyForm";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 

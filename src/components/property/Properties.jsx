@@ -6,13 +6,13 @@ export const Properties = (props) => {
   let { properties, onHandleDeleteProperty } = props;
   // console.log("properties ", properties);
   return (
-    <>
+    <section className="flex flex-wrap justify-center items-center">
       {properties.length > 0 ? (
-        properties.map((property, index) => {
+        properties.map((property) => {
           return (
             <Property
               property={property}
-              key={index}
+              key={property.id}
               onHandleDeleteProperty={onHandleDeleteProperty}
             />
           );
@@ -20,6 +20,6 @@ export const Properties = (props) => {
       ) : (
         <h1>No properties to show</h1>
       )}
-    </>
+    </section>
   );
 };

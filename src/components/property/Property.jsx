@@ -12,14 +12,18 @@ export const Property = (props) => {
   const handleDelete = (id) => {
     props.onHandleDeleteProperty(id);
   };
+  
   return (
     <>
-      <section className="flex flex-col">
+      <section className="flex flex-col flex-nowrap justify-center items-center border box-border p-0 m-2 w-5/12 h-72">
         <PropertyTitle title={title} />
         <PropertyImage image={image} title={title} />
         <PropertyLocation location={location} />
         <PropertyPrice price={price} />
-        <button onClick={() => handleDelete(props.property.id)}>Delete</button>
+        <button onClick={() => {handleDelete(props.property.id)}}
+          className="w-14 text-sm border-amber-950 border-2 mt-3">
+          Delete
+        </button>
       </section>
     </>
   );
