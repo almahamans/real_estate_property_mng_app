@@ -3,7 +3,6 @@ export const uploadImageToCloudinary = async (file) => {
   formData.append('file', file);
   formData.append('upload_preset', 'nnjzigc0'); // Ensure you have set up an upload preset in Cloudinary
   formData.append('folder', 'property'); // Specify the folder where you want to store the image
-// db2texgwr
   try {
     const response = await fetch(
       `https://api.cloudinary.com/v1_1/dnrcimpha/image/upload`,

@@ -6,12 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { uploadImageToCloudinary } from "../../utility/uploadingImage";
 
 export const AddProperty = (props) => {
-  const [property, setProperty] = useState({
+  const initalValue = {
     title: "",
     image: "",
     price: 0,
     location: "",
-  });
+  };
+  const [property, setProperty] = useState(initalValue);
 
   const [errors, setErrors] = useState({});
 
@@ -51,6 +52,7 @@ const handleSubmit = async (event) => {
   if (validateinput()) {
     try {   
       const imageUrl = await uploadImageToCloudinary(property.image); //upload image to Cloudinary
+      
       const newProperty = {
         id: nanoid(),
         title: property.title,
@@ -64,13 +66,8 @@ const handleSubmit = async (event) => {
       toast.success("Property created successfully!");
 
       props.onHandleAddProperty(newProperty);
-      
-      setProperty({
-        title: "",
-        image: "",
-        price: 0,
-        location: "",
-      });
+
+      setProperty(initalValue);
     } catch (error) {
       console.error("Error uploading image: ", error);
       toast.error("Failed to upload image. Please try again.");

@@ -1,11 +1,26 @@
 import React from 'react'
+import { BrowserRouter, Link, Outlet } from "react-router-dom";
 
 export const Header = () => {
     return (
+      <>
       <header>
-        <span>Property List</span>
-        <span>Add Property</span>
-        <span>Edit Property</span>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/ListProperties">Property List</Link>
+          </li>
+          <li>
+            <Link to="/AddProperty">Add Property</Link>
+          </li>
+          <li>
+            <Link to="/EditProperty">Edit Property</Link>
+          </li>
+        </ul> 
       </header>
+      <Outlet />
+      </>
     );
 }
