@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Property } from "./Property";
+import { PropertyContext } from "../../context/ProprtyContext";
 
-export const Properties = (props) => {
-  let { properties, onHandleDeleteProperty } = props;
+export const Properties = () => {
+  const { propertyList, handleDeleteItem } = useContext(PropertyContext);
   // console.log("properties ", properties);
   return (
-    <section className="flex flex-wrap justify-center items-center bg-slate-100">
-      {properties.length > 0 ? (
-        properties.map((property) => {
+    <section className="flex flex-wrap justify-center items-center gap-4 bg-zinc-200 pt-9">
+      {propertyList.length > 0 ? (
+        propertyList.map((property) => {
           return (
             <Property
               property={property}
               key={property.id}
-              onHandleDeleteProperty={onHandleDeleteProperty}
+              onHandleDeleteProperty={handleDeleteItem}
             />
           );
         })
