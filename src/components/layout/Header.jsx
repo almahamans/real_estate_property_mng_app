@@ -18,6 +18,12 @@ export const Header = () => {
             <li>
               <Link to="/EditProperty">Edit Property</Link>
             </li>
+            <li>
+              <Link to="/SignIn">Sign In</Link>
+            </li>
+            <li>
+              <Link to="/SignOut">Sign Out</Link>
+            </li>
           </ul>
         </header>
         <Outlet />

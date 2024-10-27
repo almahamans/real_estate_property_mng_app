@@ -10,6 +10,9 @@ import { Footer } from "./components/layout/Footer";
 import { Home } from "./pages/Home";
 import {ErrorPage} from "./pages/ErrorPage";
 import { PropertyProvider } from "./context/ProprtyContext"; 
+import { ProtectedRoute } from "./routes/ProtectedRoute";
+import { SignIn } from "./pages/SignIn";
+import { SignOut } from "./pages/SignOut";
 
 const App = () => {
   
@@ -24,14 +27,26 @@ const App = () => {
           element: <Home />,
         },
         {
-          path: "/ListProperties",
-          element:
-            <Properties
-            />
+          path: "ListProperties",
+          element: <Properties />,
         },
         {
-          path: "/AddProperty",
-          element: <AddProperty  />,
+          path: "/",
+          element: <ProtectedRoute />,
+          children: [
+            {
+              path: "AddProperty",
+              element: <AddProperty />,
+            },
+          ],
+        },
+        {
+          path: "SignIn",
+          element: <SignIn />,
+        },
+        {
+          path: "SignOut",
+          element: <SignOut />,
         },
       ],
     },
