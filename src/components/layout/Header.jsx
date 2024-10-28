@@ -15,9 +15,9 @@ export const Header = () => {
             <li>
               <Link to="/AddProperty">Add Property</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/EditProperty">Edit Property</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/SignIn">Sign In</Link>
             </li>

@@ -13,6 +13,7 @@ import { PropertyProvider } from "./context/ProprtyContext";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { SignIn } from "./pages/SignIn";
 import { SignOut } from "./pages/SignOut";
+import { UpdatePropertyform } from "./components/form/UpdatePropertyform";
 
 const App = () => {
   
@@ -37,6 +38,10 @@ const App = () => {
             {
               path: "AddProperty",
               element: <AddProperty />,
+            },
+            {
+              path: "EditProperty",
+              element: <UpdatePropertyform />,
             },
           ],
         },

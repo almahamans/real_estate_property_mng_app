@@ -20,9 +20,22 @@ export const PropertyProvider = ({ children }) => {
     setPropertyList(filteredProperties);
   };
 
+    const handleEditItem = (id) => {
+      const filteredProperties = propertyList.filter(
+        (property) => property.id !== id
+      );
+      setPropertyList(filteredProperties);
+    };
+
   return (
     <PropertyContext.Provider
-      value={{ propertyList, handleAddingItem, handleDeleteItem }}
+      value={{
+        propertyList,
+        setPropertyList,
+        handleAddingItem,
+        handleDeleteItem,
+        handleEditItem,
+      }}
     >
       {children}
     </PropertyContext.Provider>

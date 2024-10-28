@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
     const [userData, setUserData] = useState({username: "", password: ""});
     const [error, setError] = useState({ value: "" });
+    const navigate = useNavigate();
+
     const handleInputChange = (e) => {
       setUserData((prevState) => {
         return {
@@ -20,6 +23,7 @@ export const SignIn = () => {
         userData.password === "123456"
       ){
         localStorage.setItem("isLogin", true);
+        navigate("/");
       } else {
         setError({ value: "Invalid username/password" });
       }
@@ -57,7 +61,7 @@ export const SignIn = () => {
               }}
             />
           </section>
-          <button className="bg-green-700 p-2 rounded-md w-28 text-sm text-white font-bold mt-6 mr-auto ml-auto">
+          <button className="bg-green-700 p-2 rounded-md w-28 text-sm text-white font-bold mt-6 mx-auto">
             Sign In
           </button>
           {error.value && <p className="text-red-500">{error.value}</p>}
