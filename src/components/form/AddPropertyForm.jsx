@@ -67,7 +67,7 @@ const handleSubmit = async (event) => {
       console.log("new Property ", newProperty);
    
       handleAddingItem(newProperty);
-      setProperty(initalValue);  //reset 
+      setProperty(initalValue);   
       navigate("/ListProperties");
     } catch (error) {
       console.error("Error uploading image: ", error);   

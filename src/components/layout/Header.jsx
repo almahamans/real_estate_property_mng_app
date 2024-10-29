@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export const Header = () => {
     return (
@@ -15,9 +15,6 @@ export const Header = () => {
             <li>
               <Link to="/AddProperty">Add Property</Link>
             </li>
-            {/* <li>
-              <Link to="/EditProperty">Edit Property</Link>
-            </li> */}
             <li>
               <Link to="/SignIn">Sign In</Link>
             </li>

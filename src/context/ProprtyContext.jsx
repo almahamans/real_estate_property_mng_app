@@ -4,7 +4,8 @@ import propertiesData from "../data/propertiesData";
 
 export const PropertyContext = createContext();
 export const PropertyProvider = ({ children }) => {
-  const [propertyList, setPropertyList] = useState(propertiesData); //update the list
+  const [propertyList, setPropertyList] = useState(propertiesData || []); 
+  const [updatedProperty, setUpdatedProperty] = useState(null);
 
   const handleAddingItem = (newProperty) => {
     setPropertyList((prevPropertiesList) => {
@@ -20,26 +21,32 @@ export const PropertyProvider = ({ children }) => {
     setPropertyList(filteredProperties);
   };
 
-    const handleEditItem = (id) => {
-      const filteredProperties = propertyList.filter(
-        (property) => property.id !== id
+  const handleEdit = (id) => {
+    setUpdatedProperty(id);
+  };
+
+  const handleUpdateSubmit = (updatedProperty) => {
+    setPropertyList((prevProp) => {
+      prevProp.map((property) =>
+        property.id === updatedProperty.id ? updatedProperty : property
       );
-      setPropertyList(filteredProperties);
-    };
+    });
+    // setUpdatedProperty(null);
+  };
 
   return (
     <PropertyContext.Provider
       value={{
+        updatedProperty,
         propertyList,
         setPropertyList,
         handleAddingItem,
         handleDeleteItem,
-        handleEditItem,
+        handleUpdateSubmit,
+        handleEdit,
       }}
     >
       {children}
     </PropertyContext.Provider>
   );
 };
-
-

@@ -9,9 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 export const Property = ({ property }) => {
   let { title, image, location, price } = property;
-  const { handleDeleteItem, handleEditItem } = useContext(PropertyContext);
-  // console.log("props.property ", props.property);
+  const { handleDeleteItem, handleEdit } = useContext(PropertyContext);
+  console.log("props.property ", property);
   const navigate = useNavigate()
+  
+  const handleupdate = () => {
+    handleEdit(property.id);
+    navigate("/EditProperty");
+  }
   return (
     <>
       <section className="flex flex-col flex-nowrap justify-center items-center border box-border m-2 w-5/12 h-96 bg-white">
@@ -27,10 +32,7 @@ export const Property = ({ property }) => {
             Delete
           </button>
           <button
-            onClick={() => {
-              navigate("/EditProperty");
-              handleEditItem(property.id)
-            }}
+            onClick={handleupdate}
             className="w-14 text-sm border-amber-950 border-2 mt-3"
           >
             Edit
