@@ -6,24 +6,21 @@ import { PropertyContext } from "../../context/ProprtyContext";
 
 export const EditPropertyform = () => {
   const { updatedProperty, propertyList, handleUpdateSubmit } = useContext(PropertyContext);
-  const currentProperty = propertyList?.find((property) => property.id === updatedProperty) || {};
+ 
   const navigate = useNavigate();
 
-  const [property, setProperty] = useState({
-    id: currentProperty.id || "",
-    title: currentProperty.title || "",
-    location: currentProperty.location || "",
-    price: currentProperty.price || 0,
-  });
+  const [property, setProperty] = useState({});
 
   useEffect(() => {
+     const currentProperty =
+       propertyList?.find((property) => property.id === updatedProperty) || {};
     setProperty({
       id: currentProperty.id || "",
       title: currentProperty.title || "",
       location: currentProperty.location || "",
       price: currentProperty.price || 0,
     });
-  }, [updatedProperty, currentProperty]);
+  }, [updatedProperty]);
 
   const [errors, setErrors] = useState({});
 
